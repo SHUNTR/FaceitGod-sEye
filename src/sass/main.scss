@@ -1,0 +1,29 @@
+@import url(./reset.scss);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 300px;
+  background-color: rgb(18, 18, 18);
+}
+
+.wrapper {
+  &__head {
+    display: flex;
+
+    padding: 10px 15px;
+
+    input {
+      height: 40px;
+      width: 100%;
+      border: 2px solid white;
+      border-radius: 10px;
+      padding: 0 10px;
+      outline: none;
+      color:white;
+    }
+  }
+}
