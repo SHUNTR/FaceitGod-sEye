@@ -2,9 +2,14 @@
   "manifest_version": 3,
   "name": "Faceit God's Eye",
   "version": "1.0.0",
-  "description": "Простое расширение для поиска аккаунта Faceit по steam пользователя.",
+  "description": "Просто расширение поиска игроков Faceit по Steam URL или ID",
   "permissions": ["storage"],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "<all_urls>",
+    "https://open.faceit.com/*",
+    "https://api.steampowered.com/*",
+    "https://steamcommunity.com/*"
+  ],
   "icons": {
     "16": "images/icon-16x16.png",
     "48": "images/icon-48x48.png",
@@ -14,16 +19,28 @@
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/icon-16x16.png",
-      "48": "images/icon-48x48-off.png",
+      "48": "images/icon-48x48.png",
       "128": "images/icon-128x128.png"
     }
   },
+
+  "content_scripts": [
+    {
+      "matches": ["https://steamcommunity.com/*"],
+      "js": ["js/widget.js"],
+      "css": ["css/main.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
   "background": {
     "service_worker": "js/background.js",
     "type": "module"
   },
-  "web_accessible_resources": [{
-    "resources": ["images/*"],
-    "matches": ["<all_urls>"]
-  }]
+  "web_accessible_resources": [
+    {
+      "resources": ["images/*","assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

@@ -1,0 +1,123 @@
+.view-section {
+  padding: 16px;
+
+  &__back-link {
+    background: none;
+    border: none;
+    color: var(--txt2);
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding: 0;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+.profile-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  &__header {
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--bg2), var(--brd));
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--card);
+  }
+
+  &__details {
+    flex: 1;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 17px;
+    color: var(--txt);
+  }
+
+  &__link {
+    font-size: 12px;
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__badge {
+    margin-left: auto;
+  }
+
+  &__stats-row {
+    padding: 14px;
+    display: flex;
+    gap: 8px;
+    background: var(--bg2);
+  }
+
+  &__stat-box {
+    background: var(--card);
+    flex: 1;
+    padding: 10px 6px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  &__stat-lbl {
+    font-size: 10px;
+    color: var(--txt2);
+    text-transform: uppercase;
+    display: block;
+  }
+
+  &__stat-val {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 4px;
+    display: block;
+    color: var(--txt);
+
+    &--thr {
+      color: var(--warning);
+    }
+  }
+
+  &__progress {
+    padding: 14px;
+    background: var(--bg2);
+    border-top: 1px solid var(--brd);
+  }
+
+  &__progress-bar {
+    height: 8px;
+    background: var(--card);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.3s ease;
+  }
+
+  &__progress-text {
+    margin-top: 8px;
+    font-size: 12px;
+    text-align: center;
+    color: var(--txt2);
+  }
+}

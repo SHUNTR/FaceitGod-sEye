@@ -1,0 +1,58 @@
+:root {
+  --bg: #121212;
+  --bg2: #1e1e1e;
+  --txt: #eee;
+  --txt2: #aaa;
+  --brd: #333;
+  --card: #1e1e1e;
+  --inp: #2d2d2d;
+  --hov: #333;
+  --primary: #ff5500;
+  --accent: #e64a00;
+  --acc: #ff5500;
+  --acc2: #e64a00;
+  --red: #ef4444;
+  --green: #22c55e;
+}
+:root[data-theme="light"] {
+  --bg: #f4f4f5;
+  --bg2: #fff;
+  --txt: #18181b;
+  --txt2: #666;
+  --brd: #e4e4e7;
+  --card: #fff;
+  --inp: #fff;
+  --hov: #f4f4f5;
+}
+
+$lvl_colors: (
+  "uknown": #cccccc,
+  1: #cccccc,
+  2: #47e36e,
+  3: #47e36e,
+  4: #ffcd25,
+  5: #ffcd25,
+  6: #ffcd25,
+  7: #ffcd25,
+  8: #e2611f,
+  9: #e2611f,
+  10: #c6213d,
+  challenger: #e80128,
+);
+$lvl_percentens: (
+  "uknown": 5,
+  1: 5,
+  2: 15,
+  3: 20,
+  4: 30,
+  5: 35.5,
+  6: 45,
+  7: 50,
+  8: 55,
+  9: 65,
+  10: 75,
+  challenger: 75,
+);
+$length_circle: 125.66;
+$badge-bg-color: #00000033;
+$badge-lvl-path-color: #1d1d1d;

@@ -1,0 +1,70 @@
+@use "./vars.scss";
+
+:root {
+  @each $lvl, $color in vars.$lvl_colors {
+    --level_#{$lvl}-bg: #{$color};
+  }
+}
+
+.lvl-badge {
+  border-radius: 100%;
+  font-weight: 800;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+
+  background-color: #333;
+}
+
+@each $lvl, $color in vars.$lvl_colors {
+  .lvl-#{$lvl} {
+    color: var(--level_#{$lvl}-bg);
+    box-shadow: var(--level_#{$lvl}-bg) 0px 0px 15px;
+
+    .progress {
+      stroke: var(--level_#{$lvl}-bg);
+    }
+
+    text {
+      fill: var(--level_#{$lvl}-bg);
+    }
+  }
+}
+
+@each $lvl, $percents in vars.$lvl_percentens {
+  .lvl-#{$lvl} .progress {
+    stroke-dashoffset: calc(
+      #{vars.$length_circle} - (#{vars.$length_circle} * #{$percents} / 100)
+    );
+  }
+}
+
+.badge__icon {
+  stroke-width: 6px;
+  stroke-dasharray: vars.$length_circle;
+  stroke-dashoffset: vars.$length_circle;
+
+  border-radius: 100%;
+  background: vars.$badge-bg-color;
+
+  height: 50px;
+  width: 50px;
+  .path {
+    stroke-dashoffset: calc(
+      #{vars.$length_circle} - (#{vars.$length_circle} * 0.75)
+    );
+    stroke: #{vars.$badge-lvl-path-color};
+  }
+  circle {
+    transform: rotate(135deg);
+    transform-origin: 25px 25px;
+  }
+
+  text {
+    stroke-width: 1px;
+    font-weight: bold;
+  }
+}
