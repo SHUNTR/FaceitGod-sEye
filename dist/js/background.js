@@ -1,1 +1,0 @@
-chrome.runtime.onInstalled.addListener(()=>{chrome.action.setBadgeText({text:""}),chrome.action.setBadgeBackgroundColor({color:"#00000000"}),chrome.action.setIcon({path:{16:chrome.runtime.getURL("images/icon-16x16.png"),48:chrome.runtime.getURL("images/icon-48x48.png"),128:chrome.runtime.getURL("images/icon-128x128.png")}})});
