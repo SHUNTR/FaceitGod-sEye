@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <g stroke="#ff8b52" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Внешние угловые скобки прицела -->
+    <path d="M20 35V20H35 M65 20H80V35 M20 65V80H35 M65 80H80V65" stroke-width="3"/>
+    
+    <!-- Фоновый тонкий ромб с легкой прозрачностью -->
+    <path d="M50 25L80 50L50 75L20 50Z" stroke-width="1" opacity="0.3" />
+    
+    <!-- Главный контур ромбовидного "глаза" -->
+    <path d="M50 32L72 50L50 68L28 50Z" stroke-width="3.5" />
+    
+    <!-- Зрачок (ромб по центру) -->
+    <rect x="45.5" y="45.5" width="9" height="9" transform="rotate(45 50 50)" fill="#ff8b52" stroke="none" />
+    
+  </g>
+</svg>
