@@ -12,6 +12,7 @@
     "vite-plugin-static-copy": "^0.17.0"
   },
   "dependencies": {
+    "@vueuse/core": "^14.3.0",
     "axios": "^1.15.0",
     "gsap": "^3.15.0",
     "vue": "^3.4.0"

@@ -1,7 +1,8 @@
 <template>
-  <shatter ref="shutterRef">
-    <div class="app-wrapper">
-      <header class="app__header">
+  <shatter ref="shatterRef">
+    <div class="FGE-wrapper">
+      <header class="FGE__header">
+        <h1 class="FGE__title">GOD'S EYE</h1>
         <themeControls />
       </header>
 
@@ -30,7 +31,7 @@ const view = ref('history');
 const loading = ref(false);
 const profile = ref(null);
 const errorMsg = ref(null);
-const shutterRef = ref()
+const shatterRef = ref()
 
 const TAB_MAPPING = {
   history:historyTab,
@@ -41,9 +42,10 @@ const currentTab = computed(()=>TAB_MAPPING[view.value] || null)
 
 
 onMounted(()=>{
- setTimeout(()=> shutterRef.value.switchTheme(()=>{}),0)
+  shatterRef.value.fromClosedShutter(()=>{})
 })
 
 provide('profile',profile)
 provide('errorMsg',errorMsg)
+provide('shatter',shatterRef)
 </script>

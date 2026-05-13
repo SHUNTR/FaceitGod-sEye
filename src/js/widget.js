@@ -9,7 +9,7 @@ function mountWidget() {
 
   const container = document.createElement("div");
   container.id = WIDGET_ID;
-  container.className = "faceit-gods-eye-widget";
+  container.className = "FGE faceit-gods-eye-widget";
   const pageContainer = document.body.querySelector(".profile_leftcol")
   if(!pageContainer) return
   pageContainer.prepend(container);

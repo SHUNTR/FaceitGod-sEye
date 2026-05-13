@@ -4,32 +4,60 @@
 @import url(./animations/skeleton.scss);
 @import url(./entites/index.scss);
 @import url(./features/shatter.scss);
+@import url(./fonts.scss);
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  min-height: 300px;
-}
-.app {
+.FGE {
   &-wrapper {
     max-width: 580px;
     margin: 0 auto;
-    font-family: system-ui, sans-serif;
-    padding: 16px;
     background: var(--bg);
-    height: 100vh;
+    font-family: var(--fge-font-family);
+    height: 420px;
     color: var(--txt);
     transition:
       background 0.3s,
       color 0.3s;
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+
+      border: 2px solid var(--red);
+      aspect-ratio: 1/1;
+      height: 24px;
+    }
+
+    &::after {
+      border-bottom: 0px;
+      border-right: 0px;
+      left: 0;
+      top: 0;
+    }
+    &::before {
+      border-top: 0px;
+      border-left: 0px;
+      right: 0;
+      bottom: 0;
+    }
   }
   &__header {
+    padding: 15px 20px;
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid var(--brd);
+  }
+  &__title {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--red);
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 }
 

@@ -13,6 +13,7 @@
   --acc2: #e64a00;
   --red: #ff4655;
   --green: #22c55e;
+  --fge-font-family: "FGE-JetBrainsMono", monospace;
 }
 :root[data-theme="light"] {
   --bg: #f4f4f5;
@@ -23,6 +24,7 @@
   --card: #fff;
   --inp: #fff;
   --hov: #f4f4f5;
+
 }
 
 $lvl_colors: (
@@ -57,4 +59,4 @@ $length_circle: 125.66;
 $badge-bg-color: #00000033;
 $badge-lvl-path-color: #1d1d1d;
 
-$shatter-bg: #111115;
+$shatter-bg: var(--bg);

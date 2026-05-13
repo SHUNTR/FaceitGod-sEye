@@ -21,14 +21,17 @@ const shTop = ref(null);
 const shBottom = ref(null);
 const shContent = ref(null);
 
-const switchTheme = (changeThemeFn) => {
+const playShatter = (changeThemeFn) => {
   const tl = gsap.timeline();
 
-  tl.to([shTop.value, shBottom.value], {
+  tl.fromTo(shContent.value,
+    { scale: 1, opacity: 1 },
+    { scale: 0.8, opacity: 0, duration: 0.4 },
+  ).to([shTop.value, shBottom.value], {
     y: "0%",
     duration: 0.4,
     ease: "expo.inOut"
-  })
+  }, "-=0.4")
   .call(() => {
     if (changeThemeFn) changeThemeFn();
   })
@@ -49,5 +52,36 @@ const switchTheme = (changeThemeFn) => {
   );
 };
 
-defineExpose({ switchTheme });
+const fromClosedShutter = (changeThemeFn) => {
+  const tl = gsap.timeline();
+  tl.fromTo(shTop.value,
+    { y: "0%" },
+    {
+      y: "-100%",
+      duration: 0.5,
+      ease: "expo.inOut"
+    },
+    "+=0.1"
+  )
+  .fromTo(shBottom.value,
+    { y: "0%" },
+    {
+      y: "100%",
+      duration: 0.5,
+      ease: "expo.inOut"
+    },
+    "<"
+  )
+  .fromTo(shContent.value,
+    { scale: 0.95, opacity: 0 },
+    {
+      scale: 1,
+      opacity: 1,
+      duration: 0.4,
+      clearProps: "all"
+    },
+    "-=0.2"
+  );
+};
+defineExpose({ playShatter,fromClosedShutter });
 </script>

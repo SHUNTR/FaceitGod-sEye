@@ -1,30 +1,44 @@
 <template>
   <div class="themeControls">
-    <button @click="toggleTheme" class="theme-btn">
+    <button @click="debouncedToggle" class="theme-btn">
       {{ theme === 'dark' ? '☀️' : '🌙' }}
     </button>
   </div>
 </template>
 
 <script setup>
-import {onMounted,ref} from 'vue'
+import { onMounted, ref, inject } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
 import { THEME_KEY } from '@constants';
-import { loadStore,saveStore } from '@/utils/store';
+import { loadStore, saveStore } from '@/utils/store';
 
 const theme = ref('dark');
+const shatter = inject('shatter');
+
+const debouncedToggle = useDebounceFn(() => {
+  if (shatter.value?.playShatter) {
+    shatter.value.playShatter(() => toggleTheme());
+  } else {
+    toggleTheme();
+  }
+}, 200, { maxWait: 2000 });
 
 function toggleTheme() {
   theme.value = theme.value === 'dark' ? 'light' : 'dark';
-  if (typeof document !== 'undefined') document.documentElement.setAttribute('data-theme', theme.value);
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', theme.value);
+  }
   saveStore(THEME_KEY, theme.value);
 }
 
 async function loadTheme() {
   theme.value = await loadStore(THEME_KEY, 'dark');
-  if (typeof document !== 'undefined') document.documentElement.setAttribute('data-theme', theme.value);
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', theme.value);
+  }
 }
 
-onMounted(async ()=>{
+onMounted(async () => {
   await loadTheme();
 })
 </script>
