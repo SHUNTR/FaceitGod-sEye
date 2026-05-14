@@ -1,7 +1,10 @@
 <template>
-  <div class="themeControls">
-    <button @click="debouncedToggle" class="theme-btn">
-      {{ theme === 'dark' ? '☀️' : '🌙' }}
+  <div class="themeControls" @click="debouncedToggle">
+    <button class="themeControls__btn" :class="{active:theme=='dark'}" id="ngt">
+      NGT
+    </button>
+    <button class="themeControls__btn" :class="{active:theme!='dark'}" id="day">
+      DAY
     </button>
   </div>
 </template>
@@ -11,6 +14,7 @@ import { onMounted, ref, inject } from 'vue'
 import { useDebounceFn } from '@vueuse/core'
 import { THEME_KEY } from '@constants';
 import { loadStore, saveStore } from '@/utils/store';
+
 
 const theme = ref('dark');
 const shatter = inject('shatter');
