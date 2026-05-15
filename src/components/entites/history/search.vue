@@ -1,19 +1,19 @@
 <template>
-  <div class="search-container">
+  <div class="search__container">
     <input
       v-model="query"
       @keyup.enter="doSearch"
       type="text"
-      class="search-input"
-      placeholder="Steam URL / ID или Faceit nick"
+      class="search__input"
+      placeholder="STEAM_ID / FACEIT NICKNAME..."
       :disabled="loading"
     />
     <button
       @click="doSearch"
       :disabled="loading || !query.trim()"
-      class="search-btn"
+      class="search__btn"
     >
-      {{ loading ? '...' : 'Найти' }}
+      {{ loading ? '...' : 'FIND' }}
     </button>
   </div>
 </template>
