@@ -22,7 +22,10 @@
 @each $lvl, $color in vars.$lvl_colors {
   .lvl-#{$lvl} {
     color: var(--level_#{$lvl}-bg);
-    box-shadow: var(--level_#{$lvl}-bg) 0px 0px 15px;
+
+    &.lvl-badge {
+      box-shadow: var(--level_#{$lvl}-bg) 0px 0px 15px;
+    }
 
     .progress {
       stroke: var(--level_#{$lvl}-bg);

@@ -1,21 +1,21 @@
 <template>
-  <div class="view-section" key="search">
+  <div class="view-section history" key="search">
     <search
       @profile-found="(prof)=>{
       profile = prof;
       emit('change-tab','profile');
     }"
     />
-    <div v-if="errorMsg" class="error-alert">⚠️ {{ errorMsg }}</div>
-    <div v-if="!loading && history.length > 0" class="history-panel">
-      <div class="history-head">
-        <span class="history-title">🕐 История ({{ history.length }})</span>
-        <button @click="clearHistory" class="clear-btn">Очистить</button>
+    <div v-if="errorMsg" class="error-alert">{{ errorMsg }}</div>
+    <div v-if="!loading && history.length > 0" class="history__panel">
+      <div class="history__head">
+        <span class="history__title">History logs ({{ history.length }})</span>
+        <button @click="clearHistory" class="clear-btn">Clear</button>
       </div>
-      <historyList :history="history"/>
+      <historyList :history="history" />
     </div>
-    <div v-else-if="!loading" class="empty-state">
-      <p>Нет истории поиска</p>
+    <div v-else-if="!loading" class="history__empty-state">
+      <p>History is empty</p>
     </div>
     <profileSkeleton v-else-if="loading" />
   </div>
@@ -68,7 +68,7 @@ function addToHistory(p) {
     elo: p.elo, level: p.level, maxElo: p.maxElo || null
   });
 
-  if (history.value.length > 15) history.value = history.value.slice(0, 15);
+  if (history.value.length > 5) history.value = history.value.slice(0, 5);
 
   saveHistory();
 }

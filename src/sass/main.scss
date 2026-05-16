@@ -5,15 +5,17 @@
 @import url(./entites/index.scss);
 @import url(./shared/index.scss);
 @import url(./features/index.scss);
+@import url(./widgets/index.scss);
 @import url(./fonts.scss);
 
 .FGE {
   &-wrapper {
+    display: flex;
+    flex-direction: column;
     max-width: 580px;
     margin: 0 auto;
     background: var(--bg);
     font-family: var(--fge-font-family);
-    height: 420px;
     color: var(--txt);
     transition:
       background 0.3s,
@@ -24,7 +26,7 @@
       position: absolute;
       content: "";
 
-      border: 2px solid var(--red);
+      border: 2px solid var(--angles__color);
       aspect-ratio: 1/1;
       height: 24px;
     }
@@ -101,92 +103,10 @@
   font-size: 13px;
 }
 
-.history-panel {
-  background: var(--card);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.history-head {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 14px;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--brd);
-  font-size: 13px;
-  font-weight: 600;
-}
-.clear-btn {
-  background: none;
-  border: none;
-  color: var(--red);
-  cursor: pointer;
-  font-size: 12px;
-}
-.history-list {
-  max-height: 320px;
-  overflow-y: auto;
-}
-.history-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-bottom: 1px solid var(--brd);
-  transition: 0.15s;
-}
-.history-row:last-child {
-  border-bottom: none;
-}
-.history-row:hover {
-  background: var(--hov);
-}
-.row-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.row-info {
-  flex: 1;
-}
-.row-nick {
-  font-weight: 600;
-  font-size: 14px;
-}
-.row-meta {
-  font-size: 12px;
-  color: var(--txt2);
-  margin-top: 2px;
-}
 .peak-tag {
   color: var(--acc);
   font-weight: 500;
   margin-left: 4px;
-}
-.del-btn {
-  background: none;
-  border: none;
-  color: var(--txt2);
-  cursor: pointer;
-  font-size: 18px;
-  padding: 0 4px;
-  opacity: 0;
-  transition: 0.2s;
-}
-.history-row:hover .del-btn {
-  opacity: 1;
-}
-.del-btn:hover {
-  color: var(--red);
-}
-.empty-state {
-  text-align: center;
-  padding: 30px;
-  color: var(--txt2);
-  background: var(--card);
-  border-radius: 10px;
 }
 
 .back-link {

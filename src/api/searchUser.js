@@ -1,7 +1,7 @@
 import axios from "axios";
 import { resolveVanity } from "@utils/resolveVanity";
 import parseInput from "@utils/parseInput";
-import { API } from '@constants';
+import { API } from "@constants";
 
 export const searchUser = async (text) => {
   const parsed = parseInput(text);
@@ -36,14 +36,15 @@ export const searchUser = async (text) => {
       : players[0];
 
   if (!target?.player_id) throw new Error("Player not found");
-  if (!target?.games?.cs2) throw new Error("No CS2 profile");
+  const targetGame = target.games.cs2 || target.games.csgo || target.games.cs;
+  if (!targetGame) throw new Error("CS profile not found");
 
   const player = {
     id: target.player_id,
     nickname: target.nickname,
     avatar: target.avatar,
-    elo: target.games.cs2.faceit_elo,
-    level: target.games.cs2.skill_level,
+    elo: targetGame.faceit_elo,
+    level: targetGame.skill_level,
     faceit_url: `https://www.faceit.com/en/players/${target.nickname}`,
     maxElo: null,
     loadingPeak: true,
