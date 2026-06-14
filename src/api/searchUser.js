@@ -2,8 +2,9 @@ import axios from "axios";
 import { resolveVanity } from "@utils/resolveVanity";
 import parseInput from "@utils/parseInput";
 import { API } from "@constants";
+import { getPlayerStats } from "@api/getPlayerStats";
 
-export const searchUser = async (text) => {
+export const searchUser = async (text, loadDetailed = false) => {
   const parsed = parseInput(text);
   let sid = null;
 
@@ -14,6 +15,7 @@ export const searchUser = async (text) => {
     parsed.type === "nick"
       ? { nickname: parsed.val }
       : { game: "cs2", game_player_id: sid };
+
   const { data: rawPlayers } = await axios.get(`${API}/players`, {
     headers: {
       Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_API_KEY}`,
@@ -36,7 +38,16 @@ export const searchUser = async (text) => {
       : players[0];
 
   if (!target?.player_id) throw new Error("Player not found");
-  const targetGame = target.games.cs2 || target.games.csgo || target.games.cs;
+  const gameTitle =
+    "cs2" in target.games
+      ? "cs2"
+      : "csgo" in target.games
+        ? "csgo"
+        : "cs" in target.games
+          ? "cs"
+          : null;
+  if (!gameTitle) throw new Error("CS profile not found");
+  const targetGame = target.games[gameTitle];
   if (!targetGame) throw new Error("CS profile not found");
 
   const player = {
@@ -48,6 +59,13 @@ export const searchUser = async (text) => {
     faceit_url: `https://www.faceit.com/en/players/${target.nickname}`,
     maxElo: null,
     loadingPeak: true,
+    stats: null,
   };
+
+  if (loadDetailed) {
+    const stats = await getPlayerStats(target.player_id, gameTitle);
+    player.stats = stats;
+  }
+
   return player;
 };

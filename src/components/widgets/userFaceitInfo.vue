@@ -31,7 +31,7 @@ const iconUrl = ref('');
 const getUser = async ()=>{
   loading.value = true
   try{
-    const profile = await searchUser(window.location.href)
+    const profile = await searchUser(window.location.href,true)
     loading.value = false;
     user.value = profile
   }

@@ -1,14 +1,17 @@
+@use "../vars.scss";
+
 .view-section {
   padding: 16px;
 
   &__back-link {
     background: none;
     border: none;
-    color: var(--txt2);
     cursor: pointer;
     font-size: 14px;
     margin-bottom: 12px;
     padding: 0;
+    font-size: 9px;
+    color: #444;
 
     &:hover {
       color: var(--primary);
@@ -16,108 +19,123 @@
   }
 }
 .profile-card {
-  background: var(--card);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-
-  &__header {
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, var(--bg2), var(--brd));
-  }
-
-  &__avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--card);
-  }
-
-  &__details {
-    flex: 1;
-  }
-
-  &__name {
-    margin: 0;
-    font-size: 17px;
-    color: var(--txt);
-  }
-
-  &__link {
-    font-size: 12px;
-    color: var(--primary);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
+  --lvl-color: var(--red);
+  @each $lvl, $color in vars.$lvl_colors {
+    &.lvl-#{$lvl} {
+      --lvl-color: #{$color};
     }
   }
 
-  &__badge {
-    margin-left: auto;
-  }
-
-  &__stats-row {
-    padding: 14px;
+  &__header {
     display: flex;
-    gap: 8px;
-    background: var(--bg2);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
   }
 
-  &__stat-box {
-    background: var(--card);
-    flex: 1;
-    padding: 10px 6px;
-    border-radius: 6px;
-    text-align: center;
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__nickname {
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  &__level-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--lvl-color);
+    text-transform: uppercase;
+
+    a {
+      color: var(--lvl-color);
+    }
+  }
+
+  &__rating {
+    text-align: right;
+  }
+
+  &__elo-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--lvl-color);
+    line-height: 1;
+  }
+
+  &__elo-label {
+    font-size: 9px;
+    color: #444;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  &__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    border: 1px solid var(--brd);
+    background-color: var(--brd);
+
+    margin-bottom: 25px;
+  }
+
+  &__stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg);
+    padding: 10px;
   }
 
   &__stat-lbl {
-    font-size: 10px;
-    color: var(--txt2);
-    text-transform: uppercase;
-    display: block;
+    font-size: 9px;
+    color: #444;
+    margin-bottom: 4px;
   }
 
   &__stat-val {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
-    margin-top: 4px;
-    display: block;
-    color: var(--txt);
-
-    &--thr {
-      color: var(--warning);
-    }
+    text-transform: uppercase;
   }
 
   &__progress {
-    padding: 14px;
-    background: var(--bg2);
-    border-top: 1px solid var(--brd);
+    margin-top: 25px;
+    padding: 12px;
+    background: rgba(255, 139, 82, 0.05);
+    border-left: 2px solid var(--lvl-color);
   }
 
-  &__progress-bar {
-    height: 8px;
-    background: var(--card);
-    border-radius: 4px;
+  &__progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  &__progress-title {
+    color: #444;
+    letter-spacing: 0.5px;
+  }
+
+  &__progress-amount {
+    font-weight: 800;
+  }
+
+  &__progress-track {
+    height: 2px;
+    background: #222;
+    width: 100%;
     overflow: hidden;
   }
 
   &__progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--lvl-color);
     transition: width 0.3s ease;
-  }
-
-  &__progress-text {
-    margin-top: 8px;
-    font-size: 12px;
-    text-align: center;
-    color: var(--txt2);
   }
 }
