@@ -7,7 +7,10 @@ export default defineConfig({
   plugins: [
     vue(),
     viteStaticCopy({
-      targets: [{ src: "src/manifest.json", dest: "." }],
+      targets: [
+        { src: "src/manifest.json", dest: "." },
+        { src: "src/fonts/*.{ttf,woff,woff2}", dest: "fonts" },
+      ],
     }),
   ],
   resolve: {
@@ -38,7 +41,11 @@ export default defineConfig({
         chunkFileNames: "js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith(".css")) return "css/[name][extname]";
-          if (assetInfo.name?.match(/\.(png|jpg|jpeg|gif|svg|ico)$/)) return "images/[name][extname]";
+          if (assetInfo.name?.match(/\.(png|jpg|jpeg|gif|svg|ico)$/))
+            return "images/[name][extname]";
+          if (assetInfo.name?.match(/\.(ttf|woff|woff2|eot|otf)$/)) {
+            return "fonts/[name][extname]";
+          }
           return "assets/[name]-[hash][extname]";
         },
       },

@@ -8,6 +8,7 @@ export const STEAM_API =
   "https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1";
 export const THEME_KEY = "faceit_ext_theme";
 export const HISTORY_KEY = "faceit_ext_history_v4";
+export const PROFILE_REGEX = /^https:\/\/steamcommunity\.com\/(id|profiles)\/[^\/?#]+\/?$/
 export const ELO_THRESHOLDS = {
   1: 100,
   2: 501,

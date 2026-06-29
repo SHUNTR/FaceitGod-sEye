@@ -1,28 +1,34 @@
 :root {
   --bg: #121212;
   --bg2: #1e1e1e;
+  --bg3: #111;
   --txt: #eee;
   --txt2: #aaa;
   --brd: #333;
   --card: #1e1e1e;
   --inp: #2d2d2d;
-  --hov: #333;
+  --hov: #131313;
   --primary: #ff5500;
   --accent: #e64a00;
   --acc: #ff5500;
   --acc2: #e64a00;
-  --red: #ef4444;
+  --red: #ff4655;
   --green: #22c55e;
+  --fge-font-family: "FGE-Orbitron", monospace;
+  --fge-font-family_JET: "FGE-JetBrainsMono", monospace;
+
+  --angles__color: var(--red);
 }
 :root[data-theme="light"] {
   --bg: #f4f4f5;
   --bg2: #fff;
+  --bg3: #ffffff;
   --txt: #18181b;
   --txt2: #666;
   --brd: #e4e4e7;
   --card: #fff;
   --inp: #fff;
-  --hov: #f4f4f5;
+  --hov: #e6e6e7;
 }
 
 $lvl_colors: (
@@ -56,3 +62,5 @@ $lvl_percentens: (
 $length_circle: 125.66;
 $badge-bg-color: #00000033;
 $badge-lvl-path-color: #1d1d1d;
+
+$shatter-bg: var(--bg);

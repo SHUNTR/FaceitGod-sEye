@@ -1,23 +1,21 @@
 <template>
-  <div class="history-list">
+  <div class="history__list">
     <div
       v-for="(profile, idx) in props.history"
       :key="profile.id || idx"
       @click="openHistory(profile)"
-      class="history-row"
+      class="history__row"
+      :class="{
+        [`lvl-${profile.level}`]:true
+      }"
     >
-      <img
-        :src="profile.avatar ?? DEFAULT_AVATAR"
-        class="row-avatar"
-        @error="$event.target.src=DEFAULT_AVATAR"
-      />
-      <div class="row-info">
-        <div class="row-nick">{{ profile.nickname || 'Unknown' }}</div>
-        <div class="row-meta">
-          LVL {{ profile.level || '?' }} • {{ profile.elo || 0 }} ELO
-        </div>
+      <div class="row__lvl">
+        {{ profile.level }}
       </div>
-      <button @click.stop="deleteHistory(idx)" class="del-btn">×</button>
+      <div class="row__info">
+        <div class="row__nick">{{ profile.nickname || 'Unknown' }}</div>
+        <div class="row__meta">{{ profile.elo || 0 }} ELO</div>
+      </div>
     </div>
   </div>
 </template>
@@ -27,7 +25,5 @@ import {DEFAULT_AVATAR} from '@/constants';
 import { inject } from 'vue';
 const props = defineProps(['history'])
 
-
-const deleteHistory = inject('deleteHistory')
 const openHistory = inject('openHistory')
 </script>
