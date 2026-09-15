@@ -7,7 +7,7 @@
       <widgetProfileCard v-if="!loading && user" :profile="user" />
       <template v-else-if="!loading && !user && error">
         <div class="UserFaceitInfo--empty">
-          <h3>Faceit not found</h3>
+          <h3>Профиль Faceit не найден</h3>
         </div>
       </template>
       <profileSkeleton v-else-if="loading" />

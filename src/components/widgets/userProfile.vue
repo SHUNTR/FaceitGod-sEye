@@ -1,7 +1,7 @@
 <template>
   <div v-if="profile" class="view-section">
     <button @click="backToSearch" class="view-section__back-link">
-      [ BACK_TO_SEARCH ]
+      [ ВЕРНУТЬСЯ К ПОИСКУ ]
     </button>
     <profileCard :profile="profile" />
   </div>

@@ -5,7 +5,7 @@
       @keyup.enter="doSearch"
       type="text"
       class="search__input"
-      placeholder="STEAM_ID / FACEIT NICKNAME..."
+      placeholder="STEAM ID / FACEIT НИКНЕЙМ..."
       :disabled="loading"
     />
     <button
@@ -13,7 +13,7 @@
       :disabled="loading || !query.trim()"
       class="search__btn"
     >
-      {{ loading ? "..." : "FIND" }}
+      {{ loading ? "..." : "НАЙТИ" }}
     </button>
   </div>
 </template>
@@ -41,9 +41,9 @@ async function doSearch(text) {
     addToHistory(p);
   } catch (e) {
     if (e.status == 404) {
-      errorMsg.value = "Faceit not found";
+      errorMsg.value = "Профиль не найден";
     } else {
-      errorMsg.value = e.message || "Error";
+      errorMsg.value = e.message || "Ошибка поиска";
     }
     console.error(e);
   } finally {

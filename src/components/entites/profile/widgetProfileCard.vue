@@ -11,7 +11,7 @@
     </div>
     
     <div class="wpc__main-info">
-      <div class="wpc__status-label">ACTIVE PLAYER</div>
+      <div class="wpc__status-label">АКТИВНЫЙ ИГРОК</div>
       <div class="wpc__nickname">{{ profile.nickname }}</div>
       <div class="wpc__elo">
         {{ profile.elo }} <span class="wpc__elo-label">ELO</span>
@@ -23,11 +23,11 @@
 
     <div class="wpc__stats-sidebar">
       <div class="wpc__stat-group">
-        <div class="wpc__stat-label">REGION</div>
+        <div class="wpc__stat-label">РЕГИОН</div>
         <div class="wpc__stat-value">{{ regionDisplay }}</div>
       </div>
       <div class="wpc__stat-group">
-        <div class="wpc__stat-label">MATCHES</div>
+        <div class="wpc__stat-label">МАТЧИ</div>
         <div class="wpc__stat-value">{{ matches }}</div>
       </div>
     </div>

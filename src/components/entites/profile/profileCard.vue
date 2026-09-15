@@ -6,8 +6,8 @@
           {{ profile.nickname }}
         </div>
         <div class="profile-card__level-label">
-          LEVEL {{ profile.level }} |
-          <a :href="props.profile.faceit_url" target="_blank">link</a>
+          УРОВЕНЬ {{ profile.level }} |
+          <a :href="props.profile.faceit_url" target="_blank">ссылка</a>
         </div>
       </div>
       <div class="profile-card__rating">
@@ -18,7 +18,7 @@
 
     <div class="profile-card__stats-grid">
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">WINRATE</span>
+        <span class="profile-card__stat-lbl">ВИНРЕЙТ</span>
         <b class="profile-card__stat-val">{{ winRate }}%</b>
       </div>
       <div class="profile-card__stat-item">
@@ -32,26 +32,26 @@
         <b class="profile-card__stat-val">{{ hs }}%</b>
       </div>
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">STREAK</span>
+        <span class="profile-card__stat-lbl">СЕРИЯ</span>
         <b class="profile-card__stat-val" :style="{ color: streakColor }">
           {{ streak }}
         </b>
       </div>
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">MATCHES</span>
+        <span class="profile-card__stat-lbl">МАТЧИ</span>
         <b class="profile-card__stat-val">{{ matches }}</b>
       </div>
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">AVG KILLS</span>
+        <span class="profile-card__stat-lbl">СР. КИЛЛЫ</span>
         <b class="profile-card__stat-val">{{ avgKills }}</b>
       </div>
     </div>
 
     <div v-if="!isMaxLevelReached" class="profile-card__progress">
       <div class="profile-card__progress-info">
-        <span class="profile-card__progress-title">NEXT_LVL_PROGRESS</span>
+        <span class="profile-card__progress-title">ДО СЛЕДУЮЩЕГО УРОВНЯ</span>
         <span class="profile-card__progress-amount"
-          >{{ eloToNextElo }} ELO LEFT</span
+          >ОСТАЛОСЬ {{ eloToNextElo }} ELO</span
         >
       </div>
       <div class="profile-card__progress-track">
