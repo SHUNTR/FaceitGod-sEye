@@ -11,13 +11,13 @@
     <div v-if="errorMsg" class="error-alert">{{ errorMsg }}</div>
     <div v-if="!loading && history.length > 0" class="history__panel">
       <div class="history__head">
-        <span class="history__title">History logs ({{ history.length }})</span>
-        <button @click="clearHistory" class="clear-btn">Clear</button>
+        <span class="history__title">История поиска ({{ history.length }})</span>
+        <button @click="clearHistory" class="clear-btn">Очистить</button>
       </div>
       <historyList :history="history" />
     </div>
     <div v-else-if="!loading" class="history__empty-state">
-      <p>History is empty</p>
+      <p>История пуста</p>
     </div>
     <profileSkeleton v-else-if="loading" />
   </div>

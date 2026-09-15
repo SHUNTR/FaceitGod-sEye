@@ -56,6 +56,8 @@ export const searchUser = async (text, loadDetailed = false) => {
     avatar: target.avatar,
     elo: targetGame.faceit_elo,
     level: targetGame.skill_level,
+    country: target.country,
+    region: targetGame.region,
     faceit_url: `https://www.faceit.com/en/players/${target.nickname}`,
     maxElo: null,
     loadingPeak: true,

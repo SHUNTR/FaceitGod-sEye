@@ -1,14 +1,13 @@
 <template>
   <div class="UserFaceitInfo">
     <header class="UserFaceitInfo__header">
-      <img :src="iconUrl" />
-      <h2>Faceit God's Eye</h2>
+      <h2>FACEIT <span>GOD'S EYE</span></h2>
     </header>
     <main class="UserFaceitInfo__body">
-      <profileCard v-if="!loading && user" :profile="user" />
+      <widgetProfileCard v-if="!loading && user" :profile="user" />
       <template v-else-if="!loading && !user && error">
         <div class="UserFaceitInfo--empty">
-          <h3>Faceit not found</h3>
+          <h3>Профиль Faceit не найден</h3>
         </div>
       </template>
       <profileSkeleton v-else-if="loading" />
@@ -20,14 +19,12 @@
 import { ref, onMounted } from "vue";
 import { searchUser } from "@api/searchUser";
 
-import profileCard from "@entites/profile/profileCard.vue";
+import widgetProfileCard from "@entites/profile/widgetProfileCard.vue";
 import profileSkeleton from "@entites/profile/profileSkeleton.vue";
 
 const user = ref();
 const loading = ref(true);
 const error = ref(false);
-const iconUrl = ref("");
-
 const getUser = async () => {
   loading.value = true;
   try {
@@ -43,7 +40,6 @@ const getUser = async () => {
 
 onMounted(() => {
   loading.value = true;
-  iconUrl.value = chrome.runtime.getURL("images/icon-48x48.png");
   getUser();
 });
 </script>
@@ -78,62 +74,27 @@ onMounted(() => {
   &__header {
     display: flex;
     align-items: center;
-    gap: 10px;
     height: 40px;
-    font-size: 24px;
-    padding: 8px 12px;
-    background: #141414a6;
-    position: relative;
-   border-bottom: 1px solid var(--brd);
+    padding: 0 20px;
+    background: #111111;
+    border-bottom: 1px solid #222;
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      height: 3px;
-      background: var(--angles__color);
-      transform: translateX(-50%);
-      width: 75%;
-      transition: 0.2s;
-    }
-    img {
-      height: 32px;
+    h2 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 1px;
+      span {
+        color: var(--red);
+      }
     }
   }
   &__body {
     .skeleton {
       border-radius: 0px;
     }
-    .profile-card {
-      &__header{
-        height: 50px;
-      }
-      padding: 12px;
-      background: var(--bg);
-      &__nickname {
-        font-size: 24px;
-      }
-      &__level-label {
-        font-size: 14px;
-        a {
-          text-decoration: underline;
-        }
-      }
-      &__elo {
-        &-value {
-          font-size: 32px;
-        }
-        &-label {
-          font-size: 16px;
-        }
-      }
-      &__stat {
-        &-lbl {
-          font-size: 14px;
-        }
-      }
-    }
+    background: var(--bg);
   }
   &--empty {
     display: flex;
