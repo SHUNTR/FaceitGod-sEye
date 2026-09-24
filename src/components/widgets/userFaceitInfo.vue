@@ -7,7 +7,7 @@
       <widgetProfileCard v-if="!loading && user" :profile="user" />
       <template v-else-if="!loading && !user && error">
         <div class="UserFaceitInfo--empty">
-          <h3>Профиль Faceit не найден</h3>
+          <h3>{{ t('faceitNotFound') }}</h3>
         </div>
       </template>
       <profileSkeleton v-else-if="loading" />
@@ -21,6 +21,7 @@ import { searchUser } from "@api/searchUser";
 
 import widgetProfileCard from "@entites/profile/widgetProfileCard.vue";
 import profileSkeleton from "@entites/profile/profileSkeleton.vue";
+import { t } from "@/utils/i18n";
 
 const user = ref();
 const loading = ref(true);

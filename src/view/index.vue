@@ -3,7 +3,10 @@
     <div class="FGE-wrapper">
       <header class="FGE__header">
         <h1 class="FGE__title">GOD'S EYE</h1>
-        <themeControls />
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <langControls />
+          <themeControls />
+        </div>
       </header>
 
       <component
@@ -22,6 +25,7 @@ import axios from 'axios';
 
 import Badge from '@shared/badge.vue'
 import themeControls from '@features/themeControls.vue'
+import langControls from '@features/langControls.vue'
 import shatter from '@features/shatter.vue';
 
 import historyTab from '@widgets/historyTab.vue';

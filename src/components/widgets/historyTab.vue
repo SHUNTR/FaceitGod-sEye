@@ -11,26 +11,25 @@
     <div v-if="errorMsg" class="error-alert">{{ errorMsg }}</div>
     <div v-if="!loading && history.length > 0" class="history__panel">
       <div class="history__head">
-        <span class="history__title">История поиска ({{ history.length }})</span>
-        <button @click="clearHistory" class="clear-btn">Очистить</button>
+        <span class="history__title">{{ t('searchHistory') }} ({{ history.length }})</span>
+        <button @click="clearHistory" class="clear-btn">{{ t('clear') }}</button>
       </div>
       <historyList :history="history" />
     </div>
     <div v-else-if="!loading" class="history__empty-state">
-      <p>История пуста</p>
+      <p>{{ t('historyEmpty') }}</p>
     </div>
     <profileSkeleton v-else-if="loading" />
   </div>
 </template>
 
 <script setup>
-import { HISTORY_KEY, API, STEAM_API, DEFAULT_AVATAR } from "@/constants";
 import { ref, onMounted, inject, defineEmits, provide } from "vue";
-import { loadStore, saveStore } from "@/utils/store";
+import { t } from "@/utils/i18n";
+import { useHistory } from "@/composables/useHistory";
 
 const loading = ref(false);
 const query = ref("");
-const history = ref([]);
 const profile = inject("profile");
 const errorMsg = inject("errorMsg");
 
@@ -40,48 +39,14 @@ import historyList from "@entites/history/historyList.vue";
 
 const emit = defineEmits("change-tab");
 
-async function loadHistory() {
-  const raw = await loadStore(HISTORY_KEY, []);
-  history.value = (Array.isArray(raw) ? raw : [])
-    .filter((item) => item?.id && item?.nickname)
-    .slice(0, 15);
-}
-
-async function saveHistory() {
-  const clean = history.value.map((h) => {
-    const cloned = JSON.parse(JSON.stringify(h));
-    return cloned;
-  });
-  await saveStore(HISTORY_KEY, clean);
-}
-
-function addToHistory(prof) {
-  if (!prof?.id) return;
-
-  const idx = history.value.findIndex((x) => x.id === prof.id);
-  if (idx >= 0) history.value.splice(idx, 1);
-
-  const cloned = {
-    ...prof,
-    stats: prof.stats ? { ...prof.stats } : null,
-  };
-
-  history.value.unshift(cloned);
-
-  if (history.value.length > 5) history.value = history.value.slice(0, 5);
-
-  saveHistory();
-}
-
-function deleteHistory(idx) {
-  history.value.splice(idx, 1);
-  saveHistory();
-}
-
-async function clearHistory() {
-  history.value = [];
-  await saveStore(HISTORY_KEY, []);
-}
+const {
+  history,
+  loadHistory,
+  updateHistoryBackground,
+  addToHistory,
+  deleteHistory,
+  clearHistory
+} = useHistory();
 
 function openHistory(item) {
   query.value = item.nickname;
@@ -101,5 +66,6 @@ provide("openHistory", openHistory);
 
 onMounted(async () => {
   await loadHistory();
+  updateHistoryBackground();
 });
 </script>

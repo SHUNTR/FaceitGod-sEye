@@ -6,8 +6,8 @@
           {{ profile.nickname }}
         </div>
         <div class="profile-card__level-label">
-          УРОВЕНЬ {{ profile.level }} |
-          <a :href="props.profile.faceit_url" target="_blank">ссылка</a>
+          {{ t('level') }} {{ profile.level }} |
+          <a :href="props.profile.faceit_url" target="_blank">{{ t('link') }}</a>
         </div>
       </div>
       <div class="profile-card__rating">
@@ -18,7 +18,7 @@
 
     <div class="profile-card__stats-grid">
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">ВИНРЕЙТ</span>
+        <span class="profile-card__stat-lbl">{{ t('winrate') }}</span>
         <b class="profile-card__stat-val">{{ winRate }}%</b>
       </div>
       <div class="profile-card__stat-item">
@@ -32,27 +32,25 @@
         <b class="profile-card__stat-val">{{ hs }}%</b>
       </div>
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">СЕРИЯ</span>
+        <span class="profile-card__stat-lbl">{{ t('streak') }}</span>
         <b class="profile-card__stat-val" :style="{ color: streakColor }">
           {{ streak }}
         </b>
       </div>
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">МАТЧИ</span>
+        <span class="profile-card__stat-lbl">{{ t('matches') }}</span>
         <b class="profile-card__stat-val">{{ matches }}</b>
       </div>
       <div class="profile-card__stat-item">
-        <span class="profile-card__stat-lbl">СР. КИЛЛЫ</span>
+        <span class="profile-card__stat-lbl">{{ t('avgKills') }}</span>
         <b class="profile-card__stat-val">{{ avgKills }}</b>
       </div>
     </div>
 
     <div v-if="!isMaxLevelReached" class="profile-card__progress">
       <div class="profile-card__progress-info">
-        <span class="profile-card__progress-title">ДО СЛЕДУЮЩЕГО УРОВНЯ</span>
-        <span class="profile-card__progress-amount"
-          >ОСТАЛОСЬ {{ eloToNextElo }} ELO</span
-        >
+        <span class="profile-card__progress-title">{{ t('toNextLevel') }}</span>
+        <span class="profile-card__progress-amount">{{ t('leftElo', { elo: eloToNextElo }) }}</span>
       </div>
       <div class="profile-card__progress-track">
         <div
@@ -67,6 +65,7 @@
 <script setup>
 import { computed, defineProps } from "vue";
 import { ELO_THRESHOLDS } from "@/constants";
+import { t } from "@/utils/i18n";
 
 const props = defineProps({
   profile: {

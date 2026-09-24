@@ -11,23 +11,23 @@
     </div>
     
     <div class="wpc__main-info">
-      <div class="wpc__status-label">АКТИВНЫЙ ИГРОК</div>
+      <div class="wpc__status-label">{{ t('activePlayer') }}</div>
       <div class="wpc__nickname">{{ profile.nickname }}</div>
       <div class="wpc__elo">
         {{ profile.elo }} <span class="wpc__elo-label">ELO</span>
       </div>
       <a :href="profile.faceit_url" target="_blank" class="wpc__profile-btn">
-        ПРОФИЛЬ FACEIT ↗
+        {{ t('faceitProfile') }}
       </a>
     </div>
 
     <div class="wpc__stats-sidebar">
       <div class="wpc__stat-group">
-        <div class="wpc__stat-label">РЕГИОН</div>
+        <div class="wpc__stat-label">{{ t('region') }}</div>
         <div class="wpc__stat-value">{{ regionDisplay }}</div>
       </div>
       <div class="wpc__stat-group">
-        <div class="wpc__stat-label">МАТЧИ</div>
+        <div class="wpc__stat-label">{{ t('matches') }}</div>
         <div class="wpc__stat-value">{{ matches }}</div>
       </div>
     </div>
@@ -36,6 +36,7 @@
 
 <script setup>
 import { computed, defineProps } from "vue";
+import { t } from "@/utils/i18n";
 
 const props = defineProps({
   profile: {

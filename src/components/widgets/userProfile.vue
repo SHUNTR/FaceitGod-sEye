@@ -1,7 +1,7 @@
 <template>
   <div v-if="profile" class="view-section">
     <button @click="backToSearch" class="view-section__back-link">
-      [ ВЕРНУТЬСЯ К ПОИСКУ ]
+      {{ t('backToSearch') }}
     </button>
     <profileCard :profile="profile" />
   </div>
@@ -10,7 +10,7 @@
 <script setup>
 import { defineEmits,inject,computed } from 'vue';
 import profileCard from '@entites/profile/profileCard.vue';
-
+import { t } from '@/utils/i18n';
 
 const emit = defineEmits(['change-tab'])
 const profile = inject('profile')

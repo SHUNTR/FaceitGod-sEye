@@ -5,7 +5,7 @@
       @keyup.enter="doSearch"
       type="text"
       class="search__input"
-      placeholder="STEAM ID / FACEIT НИКНЕЙМ..."
+      :placeholder="t('searchInput')"
       :disabled="loading"
     />
     <button
@@ -13,7 +13,7 @@
       :disabled="loading || !query.trim()"
       class="search__btn"
     >
-      {{ loading ? "..." : "НАЙТИ" }}
+      {{ loading ? t('loading') : t('findBtn') }}
     </button>
   </div>
 </template>
@@ -22,6 +22,7 @@
 import axios from "axios";
 import { inject, defineEmits } from "vue";
 import { searchUser } from "@api/searchUser";
+import { t } from "@/utils/i18n";
 
 const emit = defineEmits(["profile-found"]);
 const loading = inject("loading");
@@ -41,9 +42,9 @@ async function doSearch(text) {
     addToHistory(p);
   } catch (e) {
     if (e.status == 404) {
-      errorMsg.value = "Профиль не найден";
+      errorMsg.value = t('profileNotFound');
     } else {
-      errorMsg.value = e.message || "Ошибка поиска";
+      errorMsg.value = e.message || t('searchError');
     }
     console.error(e);
   } finally {

@@ -1,0 +1,68 @@
+.langControls {
+  position: relative;
+  display: inline-block;
+
+  &__select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg2);
+    color: var(--txt);
+    border: 1px solid var(--brd);
+    padding: 3px 6px 3px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    min-width: 45px;
+    transition: 0.3s;
+    user-select: none;
+
+    &:hover, &.is-open {
+      border-color: var(--red);
+    }
+  }
+
+  &__arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+    margin-left: 4px;
+
+    &.is-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg2);
+    border: 1px solid var(--red);
+    border-top: none;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    padding: 6px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--txt);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: var(--hov);
+      color: var(--red);
+    }
+
+    &.active {
+      background-color: var(--bg);
+      color: var(--red);
+    }
+  }
+}
