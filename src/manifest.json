@@ -33,6 +33,13 @@
       "js": ["js/widget.js"],
       "css": ["css/main.css"],
       "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.faceit.com/*"
+      ],
+      "js": ["js/faceit.js"],
+      "run_at": "document_idle"
     }
   ],
 

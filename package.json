@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --config vite.config.widget.js",
+    "build": "vite build && vite build --config vite.config.widget.js && vite build --config vite.config.faceit.js",
     "build:widget": "vite build --config vite.config.widget.js"
   },
   "devDependencies": {

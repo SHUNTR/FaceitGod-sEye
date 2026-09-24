@@ -25,6 +25,15 @@ const dictionary = {
     toNextLevel: "ДО СЛЕДУЮЩЕГО УРОВНЯ",
     leftElo: "ОСТАЛОСЬ {elo} ELO",
     loading: "...",
+    settingsGroupExtension: "Расширение",
+    settingsGroupFaceit: "FACEIT",
+    settingsTabGeneral: "Основное",
+    settingsTabMatchroom: "Матч-рум",
+    settingsTitleGeneral: "Основные настройки",
+    settingsTitleMatchroom: "Комната матча",
+    settingsTheme: "Тема оформления",
+    settingsAutoGreet: "Авто-приветствие в чате",
+    comingSoon: "Скоро...",
   },
   en: {
     backToSearch: "[ BACK TO SEARCH ]",
@@ -48,6 +57,15 @@ const dictionary = {
     toNextLevel: "TO NEXT LEVEL",
     leftElo: "{elo} ELO LEFT",
     loading: "...",
+    settingsGroupExtension: "Extension",
+    settingsGroupFaceit: "FACEIT",
+    settingsTabGeneral: "General",
+    settingsTabMatchroom: "Matchroom",
+    settingsTitleGeneral: "General Settings",
+    settingsTitleMatchroom: "Matchroom",
+    settingsTheme: "Theme",
+    settingsAutoGreet: "Auto-greet in chat",
+    comingSoon: "Coming soon",
   }
 };
 
