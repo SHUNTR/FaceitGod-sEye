@@ -10,11 +10,9 @@ const observer = new MutationObserver(() => {
   }
 });
 
-// Начинаем следить за изменениями DOM, так как Faceit это SPA
 observer.observe(document.body, { childList: true, subtree: true });
 
 function onUrlChange(url) {
-  // Ищем совпадение с URL комнаты матча
   const roomMatch = url.match(/\/room\/([a-zA-Z0-9-]+)/);
   if (roomMatch) {
     const matchId = roomMatch[1];
@@ -33,19 +31,14 @@ async function analyzeMatchRoom(matchId) {
     
     const matchData = await res.json();
     
-    // Парсим карту (если пик уже прошел)
     const map = matchData.voting?.map?.pick?.[0] || "Map not picked yet";
     
-    // Анализируем пати (у кого совпадают party_id)
     const parties = {};
     const processFaction = (factionName) => {
       const roster = matchData.teams[factionName]?.roster || [];
       roster.forEach(player => {
-        // Если игрок не один, у него есть party_id
         if (player.membership_type === "premium") {
-            // just to debug
         }
-        // Actually, party_id isn't always documented, let's just log it
       });
     };
     processFaction('faction1');
@@ -55,7 +48,6 @@ async function analyzeMatchRoom(matchId) {
     console.log("MATCH DATA:", matchData);
     console.log("MAP:", map);
     
-    // Пока выводим алерт с картой
     console.log(`God's Eye: Match found! Map: ${map}`);
     alert(`God's Eye \n\nМатч: ${matchId}\nКарта: ${map}\n\nПодробные данные выведены в консоль (F12).`);
     
@@ -64,5 +56,4 @@ async function analyzeMatchRoom(matchId) {
   }
 }
 
-// Запускаем проверку при первом инжекте скрипта
 onUrlChange(currentUrl);

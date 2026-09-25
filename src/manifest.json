@@ -5,10 +5,10 @@
   "description": "Просто расширение поиска игроков Faceit по Steam URL или ID",
   "permissions": ["storage"],
   "host_permissions": [
-    "<all_urls>",
     "https://open.faceit.com/*",
     "https://api.steampowered.com/*",
-    "https://steamcommunity.com/*"
+    "https://steamcommunity.com/*",
+    "https://www.faceit.com/*"
   ],
   "icons": {
     "16": "images/icon-16x16.png",
@@ -56,7 +56,10 @@
         "fonts/*.woff",
         "fonts/*.ttf"
       ],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "https://steamcommunity.com/*",
+        "https://www.faceit.com/*"
+      ]
     }
   ]
 }

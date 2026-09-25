@@ -18,6 +18,13 @@ export default defineConfig({
       src: resolve(__dirname, "src"),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   build: {
     outDir: "dist",
     emptyOutDir: false,

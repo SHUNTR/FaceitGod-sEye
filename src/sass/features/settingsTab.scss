@@ -1,7 +1,7 @@
 .settings {
   display: flex;
   height: 400px;
-  margin: 0 -15px -15px -15px; /* offset the default popup padding if needed */
+  margin: 0 -15px -15px -15px;
   border-top: 1px solid var(--brd);
 
   &__sidebar {
