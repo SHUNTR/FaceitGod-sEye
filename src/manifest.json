@@ -6,6 +6,7 @@
   "permissions": ["storage"],
   "host_permissions": [
     "https://open.faceit.com/*",
+    "https://api.faceit.com/*",
     "https://api.steampowered.com/*",
     "https://steamcommunity.com/*",
     "https://www.faceit.com/*"
@@ -39,7 +40,8 @@
         "https://www.faceit.com/*"
       ],
       "js": ["js/faceit.js"],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "world": "MAIN"
     }
   ],
 
