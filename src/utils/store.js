@@ -1,6 +1,12 @@
 const saveStore = (key, val) =>
   new Promise((ok) => {
-    if (typeof chrome !== "undefined" && chrome.storage?.local) {
+    if (typeof chrome !== "undefined" && chrome.storage?.sync) {
+      chrome.storage.sync.set({ [key]: val }, () => {
+        // Also save to local as a fallback/cache just in case
+        if (chrome.storage.local) chrome.storage.local.set({ [key]: val });
+        ok();
+      });
+    } else if (typeof chrome !== "undefined" && chrome.storage?.local) {
       chrome.storage.local.set({ [key]: val }, ok);
     } else {
       try {
@@ -12,7 +18,18 @@ const saveStore = (key, val) =>
 
 const loadStore = (key, def) =>
   new Promise((ok) => {
-    if (typeof chrome !== "undefined" && chrome.storage?.local) {
+    if (typeof chrome !== "undefined" && chrome.storage?.sync) {
+      chrome.storage.sync.get([key], (r) => {
+        if (r[key] !== undefined) {
+          ok(r[key]);
+        } else if (chrome.storage.local) {
+          // Fallback to local if sync is empty (for smooth migration)
+          chrome.storage.local.get([key], (localRes) => ok(localRes[key] ?? def));
+        } else {
+          ok(def);
+        }
+      });
+    } else if (typeof chrome !== "undefined" && chrome.storage?.local) {
       chrome.storage.local.get([key], (r) => ok(r[key] ?? def));
     } else {
       try {

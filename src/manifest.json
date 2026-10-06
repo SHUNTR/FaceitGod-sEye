@@ -39,6 +39,13 @@
       "matches": [
         "https://www.faceit.com/*"
       ],
+      "js": ["js/faceitBridge.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.faceit.com/*"
+      ],
       "js": ["js/faceit.js"],
       "run_at": "document_idle",
       "world": "MAIN"

@@ -41,6 +41,7 @@ export default defineConfig({
       input: {
         background: resolve(__dirname, "src/js/background.js"),
         popup: resolve(__dirname, "src/js/popup.js"),
+        faceitBridge: resolve(__dirname, "src/js/faceitBridge.js"),
         main: resolve(__dirname, "src/sass/main.scss"),
       },
       output: {
