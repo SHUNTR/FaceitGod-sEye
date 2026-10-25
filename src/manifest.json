@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Faceit God's Eye",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Просто расширение поиска игроков Faceit по Steam URL или ID",
   "permissions": ["storage"],
   "host_permissions": [
