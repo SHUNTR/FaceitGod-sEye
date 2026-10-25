@@ -1,4 +1,5 @@
 import axios from "axios";
+import { STEAM_API } from '@constants';
 
 export const resolveVanity = async (v) => {
   const key = import.meta.env.VITE_STEAM_API_KEY;

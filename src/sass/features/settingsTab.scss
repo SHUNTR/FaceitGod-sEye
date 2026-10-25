@@ -127,6 +127,24 @@
   }
 }
 
+.fge-select {
+  background-color: var(--bg);
+  border: 1px solid var(--brd);
+  color: var(--txt);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: inherit;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color 0.2s;
+
+  &:hover, &:focus {
+    border-color: var(--red);
+  }
+}
+
 .FGE__settings-btn {
   background: transparent;
   border: 1px solid var(--brd);

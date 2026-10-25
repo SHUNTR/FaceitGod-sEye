@@ -2,7 +2,7 @@ const saveStore = (key, val) =>
   new Promise((ok) => {
     if (typeof chrome !== "undefined" && chrome.storage?.sync) {
       chrome.storage.sync.set({ [key]: val }, () => {
-        // Also save to local as a fallback/cache just in case
+        // Сохраняем также локальную резервную копию.
         if (chrome.storage.local) chrome.storage.local.set({ [key]: val });
         ok();
       });
@@ -23,7 +23,7 @@ const loadStore = (key, def) =>
         if (r[key] !== undefined) {
           ok(r[key]);
         } else if (chrome.storage.local) {
-          // Fallback to local if sync is empty (for smooth migration)
+          // Если синхронизированное хранилище пусто, читаем локальные данные для плавного переноса.
           chrome.storage.local.get([key], (localRes) => ok(localRes[key] ?? def));
         } else {
           ok(def);

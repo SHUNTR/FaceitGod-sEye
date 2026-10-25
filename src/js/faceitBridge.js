@@ -1,7 +1,8 @@
-// Faceit God's Eye: Isolated-world bridge for Chrome extension APIs
+// Faceit God's Eye: мост к API расширения Chrome из изолированного контекста.
 
 const SYNC_KEYS = [
   'FGE_MATCH_STATS',
+  'FGE_MATCHES_LIMIT',
   'FGE_AUTO_ACCEPT',
   'FGE_AUTO_GREET_ENABLED',
   'FGE_GREET_CONFIG'
@@ -22,12 +23,17 @@ function readSettingsAndSync() {
         }
       });
 
-      if (merged.FGE_MATCH_STATS === undefined) {
-        merged.FGE_MATCH_STATS = true;
-      }
+      if (merged.FGE_MATCH_STATS === undefined) merged.FGE_MATCH_STATS = true;
+      if (merged.FGE_MATCHES_LIMIT === undefined) merged.FGE_MATCHES_LIMIT = 30;
+      if (merged.FGE_AUTO_ACCEPT === undefined) merged.FGE_AUTO_ACCEPT = true;
+      if (merged.FGE_AUTO_GREET_ENABLED === undefined) merged.FGE_AUTO_GREET_ENABLED = true;
+      if (merged.FGE_GREET_CONFIG === undefined) merged.FGE_GREET_CONFIG = {};
 
       if (document.documentElement) {
         document.documentElement.dataset.fgeMatchStats = String(merged.FGE_MATCH_STATS);
+        document.documentElement.dataset.fgeMatchesLimit = String(merged.FGE_MATCHES_LIMIT);
+        document.documentElement.dataset.fgeAutoAccept = String(merged.FGE_AUTO_ACCEPT);
+        document.documentElement.dataset.fgeAutoGreet = String(merged.FGE_AUTO_GREET_ENABLED);
       }
 
       window.postMessage(
@@ -52,6 +58,15 @@ if (typeof chrome !== 'undefined' && chrome.storage?.onChanged) {
         changedData[key] = change.newValue;
         if (key === 'FGE_MATCH_STATS' && document.documentElement) {
           document.documentElement.dataset.fgeMatchStats = String(change.newValue);
+        }
+        if (key === 'FGE_MATCHES_LIMIT' && document.documentElement) {
+          document.documentElement.dataset.fgeMatchesLimit = String(change.newValue);
+        }
+        if (key === 'FGE_AUTO_ACCEPT' && document.documentElement) {
+          document.documentElement.dataset.fgeAutoAccept = String(change.newValue);
+        }
+        if (key === 'FGE_AUTO_GREET_ENABLED' && document.documentElement) {
+          document.documentElement.dataset.fgeAutoGreet = String(change.newValue);
         }
       }
     }

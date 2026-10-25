@@ -1,11 +1,13 @@
 {
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "dev": "vite",
     "build": "vite build && vite build --config vite.config.widget.js && vite build --config vite.config.faceit.js",
     "build:widget": "vite build --config vite.config.widget.js"
   },
   "devDependencies": {
+    "esbuild": "^0.21.5",
     "@vitejs/plugin-vue": "^4.0.0",
     "sass": "^1.32.5",
     "vite": "^5.0.0",

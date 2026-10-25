@@ -1,7 +1,6 @@
-import axios from "axios";
+import { faceitClient } from './client';
 import { resolveVanity } from "@utils/resolveVanity";
 import parseInput from "@utils/parseInput";
-import { API } from "@constants";
 import { getPlayerStats } from "@api/getPlayerStats";
 
 export const searchUser = async (text, loadDetailed = false) => {
@@ -16,13 +15,8 @@ export const searchUser = async (text, loadDetailed = false) => {
       ? { nickname: parsed.val }
       : { game: "cs2", game_player_id: sid };
 
-  const { data: rawPlayers } = await axios.get(`${API}/players`, {
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_API_KEY}`,
-      Accept: "application/json",
-    },
+  const { data: rawPlayers } = await faceitClient.get('/players', {
     params,
-    timeout: 6000,
   });
 
   const players = Array.isArray(rawPlayers)
